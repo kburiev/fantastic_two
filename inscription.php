@@ -85,11 +85,7 @@ if(isset($_POST['send']))
 <input type="button" name="reset" value="Reset">
 </p>
 
-<p>	
-<input id="remember_me" type="checkbox" name="remember_me" value="Remember me">
-<label for="remember_me">Remember me</label>
-</p>
- 
+
 <?php
 if(isset($_POST['send']) && $flag == 0 )
 {
