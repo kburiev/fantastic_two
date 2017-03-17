@@ -1,4 +1,5 @@
 <?php
+session_start()
 
 #fonction de connnexion à la DB
 const ERROR_LOG_FILE="error.log";
@@ -76,14 +77,31 @@ function check_pass($pass, $pass_conf)
 function send_db($name, $mail, $pass)
 {
 
-	$hash = password_hash($pass, PASSWORD_BCRYPT);
-	
+	$hash = password_hash($pass, PASSWORD_BCRYPT);	
 	$bdd = connect_db("localhost", "root", "root", "3306", "pool_php_rush");
-	var_dump($bdd);
-	$query = $bdd->exec("INSERT INTO users  VALUES ('', '$name', '$mail','$hash', TRUE )");
-	var_dump($query);
+	$query = $bdd->exec("INSERT INTO users  VALUES ('', '$name', '$hash','$mail', FALSE )");
 }
 
+function check_login($email, $pass)
+{
+	$bdd = connect_db("localhost", "root", "root", "3306", "pool_php_rush");
+	$query=$bdd->query("SELECT password, name, email, is_admin FROM users WHERE email = '$email'");
+	$hash = $query->fetch(PDO::FETCH_ASSOC); 
+	
+	if(password_verify($pass, $hash['password']))
+	{
+
+		return 0;
+	}
+	else 
+	{
+		return 1;
+	}
+
+}
+
+	
+	
 
 
 

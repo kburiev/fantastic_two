@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+include_once('fantastic_library.php');
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,16 +23,16 @@
 <form method="post">
 
 <p>
-<label for="username">Username:</label>
+<label for="email">Email:</label>
 <div>
-<input type="text" name="username" required min="2" max="25"> 
+<input type="text" name="email" > 
 </div>
 </p>
 
 <p>
 <label for="password">Password:</label>
 <div>
-<input type="password" name="password" required min="3" max="25">
+<input type="password" name="password" >
 </div>
 </p>
 
@@ -34,8 +44,8 @@
 </p>
 
 <p>
-<input type="button" name="login" value="Login">
-<input type="button" name="register" value="Register">
+<input type="submit" name="login" value="Login">
+<input type="submit" name="register" value="Register">
 </p>
 
 
@@ -43,16 +53,29 @@
 forgot <a href="google.com">password</a>
 </p>
 <?php
+
 if(isset($_POST['login']))
 {
-	header('Location: index.php');
-	exit();
+	
+	$test_login=check_login($_POST['email'], $_POST['password']);
+	
+	if($test_login == 1)
+	{
+		echo "Invalid user or pass";
+	}
+	else
+	{
+		header("Location: index.php");
+		exit();
+	}
 }
 if(isset($_POST['register']))
 {
-header('Location: inscription.php');
+header("Location: inscription.php");
 	exit();
 }
+
+
 ?>
 
 </form>

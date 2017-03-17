@@ -83,7 +83,9 @@ if(isset($_POST['send']))
 <p>
 <input type="submit" name="send" value="Send">	
 <input type="button" name="reset" value="Reset">
+<input type="submit" name="login" value="Login">
 </p>
+
 
 
 <?php
@@ -95,6 +97,11 @@ if(isset($_POST['send']) && $flag == 0 )
 else if(isset($_POST['send']) && $flag != 0)
 {
 	echo "Registration failed";
+}
+if(isset($_POST['login']))
+{
+	header("Location: login.php");
+	exit();
 }
 
 
