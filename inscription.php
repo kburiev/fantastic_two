@@ -11,7 +11,7 @@
 <h2>Registration form</h2>
 
 <form method="post">
-<!--block of forms: name, email, password and confirmation.-->
+<!--block of forms: name, email, password and confirmation. As well as remember me-->
 <p>
 <div>
 <label for="name">Name:</label>
@@ -41,6 +41,12 @@
 <input type="submit" name="send" value="Send">	
 <input type="button" name="reset" value="Reset">
 </p>
+
+<p>	
+<input id="remember_me" type="checkbox" name="remember_me" value="Remember me">
+<label for="remember_me">Remember me</label>
+</p>
+ 
 
 </form>
 
