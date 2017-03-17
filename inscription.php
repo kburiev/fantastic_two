@@ -1,8 +1,6 @@
 <?php
 include_once("fantastic_library.php");
 
-
-
 $flag = 0;
 ?>
 

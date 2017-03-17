@@ -2,7 +2,7 @@
 
 session_start();
 include_once('fantastic_library.php');
-
+include_once('class_user.php');
 
 
 ?>
@@ -65,6 +65,7 @@ if(isset($_POST['login']))
 	}
 	else
 	{
+		
 		header("Location: index.php");
 		exit();
 	}
