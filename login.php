@@ -34,9 +34,27 @@
 </p>
 
 <p>
-forgot <a href="google.com">password</a>
+<input type="button" name="login" value="Login">
+<input type="button" name="register" value="Register">
 </p>
 
 
+<p>
+forgot <a href="google.com">password</a>
+</p>
+<?php
+if(isset($_POST['login']))
+{
+	header('Location: index.php');
+	exit();
+}
+if(isset($_POST['register']))
+{
+header('Location: inscription.php');
+	exit();
+}
+?>
+
+</form>
 </body>
 </html>
