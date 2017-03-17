@@ -14,8 +14,6 @@ include_once('class_user.php');
 <title>Login</title>
 </head>
 
-
-
 <body>
 
 <h2>User login</h2>
@@ -48,15 +46,14 @@ include_once('class_user.php');
 <input type="submit" name="register" value="Register">
 </p>
 
-
 <p>
 forgot <a href="google.com">password</a>
 </p>
 <?php
 
+// block of verification of user login and password. 
 if(isset($_POST['login']))
 {
-	
 	$test_login=check_login($_POST['email'], $_POST['password']);
 	
 	if($test_login == 1)
@@ -70,12 +67,12 @@ if(isset($_POST['login']))
 		exit();
 	}
 }
+// block of registration with redirection to inscription.php
 if(isset($_POST['register']))
 {
 header("Location: inscription.php");
 	exit();
 }
-
 
 ?>
 
