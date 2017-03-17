@@ -1,3 +1,12 @@
+<?php
+include_once("fantastic_library.php");
+
+
+
+$flag = 0;
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,26 +24,60 @@
 <p>
 <div>
 <label for="name">Name:</label>
+<?php 
+if(isset($_POST['send']))
+{
+	$test_name = check_name($_POST['name']);
+	if($test_name == 1)
+	{
+		echo "Invalid Name";
+		$flag = 1;
+	}
+
+}
+?>
 </div>
-<input type="text" name="name" required min="2" max="25"> 
+<input type="text" name="name" min="2" max="25"> 
 </p>
 
 <p>
 <div>
 <label for="email">Email:</label>
+<?php
+if(isset($_POST['send']))
+{
+	$test_mail = check_email($_POST['email']);
+	if($test_mail == 1)
+	{
+		echo "Invalid email";
+		$flag = 1;
+	}
+}
+?>
 </div>
-<input type="email" name="email" required> 
+<input type="text" name="email" > 
 </p>
 
 <p>
 <div>
 <label for="password">Password:</label>
+<?php
+if(isset($_POST['send']))
+{
+	$test_pass = check_pass($_POST['password'],$_POST['confirm_password']);
+	if($test_pass == 1)
+	{
+		echo "Invalid password or password confirmation";
+		$flag = 1;
+	}
+}
+?>
 </div>
-<input type="password" name="password" required min="3" max="25">
+<input type="password" name="password"  min="3" max="25">
 <div>
 <label for="confirm_password">Confirm password:</label>
 </div>
-<input type="password" name="confirm_password" required min="3" max="25">
+<input type="password" name="confirm_password"  min="3" max="25">
 </p>
 
 <p>
@@ -47,7 +90,22 @@
 <label for="remember_me">Remember me</label>
 </p>
  
+<?php
+if(isset($_POST['send']) && $flag == 0 )
+{
+	send_db($_POST['name'], $_POST['email'], $_POST['password']);
+	echo "User successfully created";
+}
+else if(isset($_POST['send']) && $flag != 0)
+{
+	echo "Registration failed";
+}
 
+
+
+
+
+?>
 </form>
 
 

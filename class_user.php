@@ -1,4 +1,7 @@
 <?php
+
+include_once('fantastic_library.com');
+
 class user
 {
 
@@ -9,10 +12,20 @@ class user
 
 	function __construct()
 	{
-		
+
+
+
+
 	}
 	
 
+
+
+
+function get($attr)
+{
+	return $this->$attr;
+}
 
 
 
