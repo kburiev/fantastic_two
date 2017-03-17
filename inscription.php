@@ -1,8 +1,6 @@
 <?php
 include_once("fantastic_library.php");
 
-
-
 $flag = 0;
 ?>
 
@@ -12,7 +10,6 @@ $flag = 0;
 <head>
 <title>Inscription of Fantastic Two</title>
 </head>
-
 
 
 <body>
@@ -43,6 +40,8 @@ if(isset($_POST['send']))
 <p>
 <div>
 <label for="email">Email:</label>
+
+<!--block of email check-->
 <?php
 if(isset($_POST['send']))
 {
@@ -54,6 +53,7 @@ if(isset($_POST['send']))
 	}
 }
 ?>
+
 </div>
 <input type="text" name="email" > 
 </p>
@@ -61,6 +61,8 @@ if(isset($_POST['send']))
 <p>
 <div>
 <label for="password">Password:</label>
+
+<!--block of verification of password & pass confirmation-->
 <?php
 if(isset($_POST['send']))
 {
@@ -72,6 +74,7 @@ if(isset($_POST['send']))
 	}
 }
 ?>
+
 </div>
 <input type="password" name="password"  min="3" max="25">
 <div>
@@ -87,7 +90,7 @@ if(isset($_POST['send']))
 </p>
 
 
-
+<!--block of user creation, if successful-->
 <?php
 if(isset($_POST['send']) && $flag == 0 )
 {
@@ -104,17 +107,8 @@ if(isset($_POST['login']))
 	exit();
 }
 
-
-
-
-
 ?>
 </form>
-
-
-
-
-
 
 
 </body>
