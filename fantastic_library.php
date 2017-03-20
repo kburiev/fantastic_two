@@ -78,13 +78,13 @@ function send_db($name, $mail, $pass)
 {
 
 	$hash = password_hash($pass, PASSWORD_BCRYPT);	
-	$bdd = connect_db("localhost", "root", "root", "3306", "pool_php_rush");
+	$bdd = connect_db("localhost", "root", "mysql", "3306", "pool_php_rush");
 	$query = $bdd->exec("INSERT INTO users  VALUES ('', '$name', '$hash','$mail', FALSE )");
 }
 
 function check_login($email, $pass)
 {
-	$bdd = connect_db("localhost", "root", "root", "3306", "pool_php_rush");
+	$bdd = connect_db("localhost", "root", "mysql", "3306", "pool_php_rush");
 	$query=$bdd->query("SELECT password, email, username, admin  FROM users WHERE email = '$email'");
 	$hash = $query->fetch(PDO::FETCH_ASSOC); 
 	
@@ -119,6 +119,22 @@ function logout()
 	unset($_SESSION['username']);
 	session_destroy();
 	header('Location: login.php');
+}
+
+function if_exist($email)
+{
+$bdd = connect_db("localhost", "root", "mysql", "3306", "pool_php_rush");
+$query=$bdd->query("SELECT email FROM users WHERE email = '$email'");
+
+$check_query = $query->fetch(PDO::FETCH_ASSOC); 
+if($check_query == FALSE)
+{	
+	return 0;
+
+}
+else
+	{return 1;
+}
 }
 
 
