@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include_once('fantastic_library.php');
+//include_once('fantastic_library.php');
 
 ?>
 
@@ -10,9 +10,10 @@ include_once('fantastic_library.php');
 <head>
 <title>Login</title>
 <link rel="stylesheet" type="text/css" href="style_login.css">
+
 </head>
 
-<body>
+<body><div class="bg-img"></div>	
 
 <h2>User login</h2>
 <!--block of login forms & remember me-->
@@ -39,7 +40,7 @@ include_once('fantastic_library.php');
 </div>
 </p>
 
-<p>
+<p id="buttons">
 <input type="submit" name="login" value="Login">
 <input type="submit" name="register" value="Register">
 </p>

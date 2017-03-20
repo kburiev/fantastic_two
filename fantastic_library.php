@@ -1,5 +1,5 @@
 <?php
-session_start()
+
 
 #fonction de connnexion à la DB
 const ERROR_LOG_FILE="error.log";
@@ -85,11 +85,16 @@ function send_db($name, $mail, $pass)
 function check_login($email, $pass)
 {
 	$bdd = connect_db("localhost", "root", "root", "3306", "pool_php_rush");
-	$query=$bdd->query("SELECT password, name, email, is_admin FROM users WHERE email = '$email'");
+	$query=$bdd->query("SELECT password, email, username, admin  FROM users WHERE email = '$email'");
 	$hash = $query->fetch(PDO::FETCH_ASSOC); 
 	
 	if(password_verify($pass, $hash['password']))
 	{
+		$_SESSION['email'] = $hash['email'];
+		$_SESSION['username'] = $hash['username'];
+		$_SESSION['admin'] = $hash['admin'];
+		$_SESSION['password'] = $hash['password'];
+		
 
 		return 0;
 	}
@@ -99,6 +104,24 @@ function check_login($email, $pass)
 	}
 
 }
+
+function logout()
+{
+	if($user1)
+	{
+		unset($user1);
+	}
+	else if($admin1)
+	{
+		unset($admin1);
+	}
+	
+	unset($_SESSION['username']);
+	session_destroy();
+	header('Location: login.php');
+}
+
+
 
 	
 	
