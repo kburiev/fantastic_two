@@ -3,15 +3,13 @@
 session_start();
 include_once('fantastic_library.php');
 
-
-
 ?>
-
 
 <!DOCTYPE html>
 <html>
 <head>
 <title>Login</title>
+<link rel="stylesheet" type="text/css" href="style_login.css">
 </head>
 
 <body>
