@@ -1,0 +1,28 @@
+h2 {
+    margin-left: 45%;
+    margin-right:45%;
+    width: 50%;
+    font-family: verdana;
+    font-size: 30px;
+}
+form{
+margin-left: 45%;
+margin-right:45%;
+width: 50%;
+}
+
+body{
+	background: -moz-linear-gradient(47deg, rgba(153,218,255,1) 38%, rgba(153,218,255,1) 41%, rgba(0,128,128,1) 100%); /* ff3.6+ */
+	height: 100vh;
+}
+
+#id {
+	width: 50%;
+
+}
+
+input{
+-webkit-border-radius: 100px;
+-moz-border-radius: 100px;
+border-radius: 100px;
+}
